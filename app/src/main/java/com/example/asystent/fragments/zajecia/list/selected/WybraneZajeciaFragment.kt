@@ -67,14 +67,14 @@ class WybraneZajeciaFragment:Fragment() {
                 spinner_uczen.adapter = adapter2
                 spinner_uczen.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        if(position>0){
+                       // if(position>0){
                             runBlocking(Dispatchers.IO) {
                                 var dane = UczenZajecia(0,0)
                                 dane = UczenZajecia(list[position].id, inputId)
                                 appDatabase.uczenZajeciaDao().insert(dane)
-                                newlist.removeAt(position)
+//                                newlist.removeAt(position)
                             }
-                        }
+                       // }
 
 
 
@@ -106,10 +106,10 @@ class WybraneZajeciaFragment:Fragment() {
 
 
     fun dataToString(list: List<Uczen>): MutableList<Any> {
-        var actual = "Dodaj ucznia"
+        var actual = ""
         var text: MutableList<Any> = mutableListOf()
-        text.add(actual)
-        actual=""
+        //text.add(actual)
+        //actual=""
         for(x in list.indices){
             for(y in 0 .. 3){
                 if(y==0){
