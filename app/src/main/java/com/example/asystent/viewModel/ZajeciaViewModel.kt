@@ -26,13 +26,13 @@ class ZajeciaViewModel(application: Application):AndroidViewModel(application) {
         }
     }
 
-    fun usunUcznia(zajecia: Zajecia){
+    fun usunZajecia(zajecia: Zajecia){
         viewModelScope.launch(Dispatchers.IO) {
             repository.usunZajecia(zajecia)
         }
     }
 
-    fun usunUcznoiw(){
+    fun usunWszystkieZajecia(){
         viewModelScope.launch(Dispatchers.IO) {
             repository.usunWszystkiezajecia()
         }

@@ -10,6 +10,9 @@ interface UczenDao {
     suspend fun dodajUcznia(uczen: Uczen)
 
     @Query("SELECT * FROM uczen_table ORDER BY id ASC")
+    fun wyswietlUczniow2(): List<Uczen>
+
+    @Query("SELECT * FROM uczen_table ORDER BY id ASC")
     fun wyswietlUczniow(): LiveData<List<Uczen>>
 
     @Query("SELECT imie FROM uczen_table")

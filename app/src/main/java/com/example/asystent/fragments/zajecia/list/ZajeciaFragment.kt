@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +15,6 @@ import com.example.asystent.data.AppDatabase
 import com.example.asystent.viewModel.ZajeciaViewModel
 import com.example.asystent.databinding.FragmentZajeciaBinding
 import com.example.asystent.fragments.zajecia.DodajZajeciaFragment
-import com.example.asystent.fragments.zajecia.select.WybraneZajeciaFragment
 
 class ZajeciaFragment:Fragment() {
     private lateinit var appDatabase: AppDatabase

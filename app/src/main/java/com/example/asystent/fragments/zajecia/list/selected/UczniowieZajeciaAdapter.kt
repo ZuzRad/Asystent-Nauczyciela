@@ -1,18 +1,17 @@
-package com.example.asystent.fragments.uczen.list
+package com.example.asystent.fragments.zajecia.list.selected
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystent.R
+import com.example.asystent.fragments.uczen.list.ListaUczniowAdapter
 import com.example.asystent.model.Uczen
+import com.example.asystent.model.UczenZajecia
 import kotlinx.android.synthetic.main.uczen_row.view.*
 
-
-class ListaUczniowAdapter: RecyclerView.Adapter<ListaUczniowAdapter.MyViewHolder>() {
-
-
-    private var listaUczniow = emptyList<Uczen>()
+class UczniowieZajeciaAdapter: RecyclerView.Adapter<UczniowieZajeciaAdapter.MyViewHolder>() {
+    private var listaUczniow = emptyList<UczenZajecia>()
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
     }
@@ -23,10 +22,9 @@ class ListaUczniowAdapter: RecyclerView.Adapter<ListaUczniowAdapter.MyViewHolder
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = listaUczniow[position]
-//        holder.itemView.text_id.text = currentItem.id.toString()
-        holder.itemView.imie.text = currentItem.imie
-        holder.itemView.nazwisko.text = currentItem.nazwisko
-        holder.itemView.nr.text = currentItem.nr.toString()
+        holder.itemView.imie.text = currentItem.id_ucznia.toString()
+        holder.itemView.nazwisko.text = currentItem.id_zajec.toString()
+        holder.itemView.nr.text = ""
 
     }
 
@@ -34,8 +32,8 @@ class ListaUczniowAdapter: RecyclerView.Adapter<ListaUczniowAdapter.MyViewHolder
         return listaUczniow.size
     }
 
-    fun setData(uczen: List<Uczen>){
-       this.listaUczniow = uczen
+    fun setData(uczenZajecia: List<UczenZajecia>){
+        this.listaUczniow = uczenZajecia
         notifyDataSetChanged()
     }
 }
