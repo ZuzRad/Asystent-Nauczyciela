@@ -1,8 +1,11 @@
 package com.example.asystent.fragments.zajecia.list
 
+import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.ListFragment
@@ -13,6 +16,7 @@ import com.example.asystent.fragments.zajecia.DodajZajeciaFragment
 import com.example.asystent.fragments.zajecia.select.WybraneZajeciaFragment
 import com.example.asystent.model.Zajecia
 import kotlinx.android.synthetic.main.zajecia_row.view.*
+import kotlin.coroutines.coroutineContext
 
 class ListaZajecAdapter(): RecyclerView.Adapter<ListaZajecAdapter.MyViewHolder>() {
 
@@ -25,7 +29,8 @@ class ListaZajecAdapter(): RecyclerView.Adapter<ListaZajecAdapter.MyViewHolder>(
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.zajecia_row, parent, false))
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: MyViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val currentItem = listaZajec[position]
 //        holder.itemView.text_id.text = currentItem.id.toString()
         holder.itemView.nazwa.text = currentItem.nazwa
@@ -34,16 +39,32 @@ class ListaZajecAdapter(): RecyclerView.Adapter<ListaZajecAdapter.MyViewHolder>(
 
         holder.itemView.setOnClickListener(object:View.OnClickListener{
             override fun onClick(v: View?) {
+                var send_id = currentItem.id
+                var send_nazwa = currentItem.nazwa
+                var send_dzien = currentItem.dzien
+                var send_godzina = currentItem.godzina
+
+                val bundle = Bundle()
+                if(position != RecyclerView.NO_POSITION){
+                    if (send_id != null) {
+                        bundle.putInt("input_id", send_id)
+                    }
+                    bundle.putString("input_nazwa", send_nazwa)
+                    bundle.putString("input_dzien", send_dzien)
+                    bundle.putString("input_godzina", send_godzina)
+                }
+
+                val fragment: Fragment = WybraneZajeciaFragment()
+                fragment.arguments = bundle
+
+
                 val activity = v!!.context as AppCompatActivity
-                val fragment = WybraneZajeciaFragment()
                 activity.supportFragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).addToBackStack(null).commit()
+
+
             }
 
         })
-
-//        holder.itemView.zajecia_layout.setOnClickListener{
-//            onItemClicked(listaZajec[position])
-//        }
 
     }
 

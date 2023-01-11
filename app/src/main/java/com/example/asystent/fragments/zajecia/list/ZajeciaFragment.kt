@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +16,7 @@ import com.example.asystent.data.AppDatabase
 import com.example.asystent.viewModel.ZajeciaViewModel
 import com.example.asystent.databinding.FragmentZajeciaBinding
 import com.example.asystent.fragments.zajecia.DodajZajeciaFragment
+import com.example.asystent.fragments.zajecia.select.WybraneZajeciaFragment
 
 class ZajeciaFragment:Fragment() {
     private lateinit var appDatabase: AppDatabase
@@ -56,4 +58,22 @@ class ZajeciaFragment:Fragment() {
             requireActivity().title = "Dodaj zajęcia"
         }
     }
+//    override fun passData(position: Int, nazwa: String, dzien: String, godzina: String) {
+//        val bundle = Bundle()
+//        bundle.putInt("input_id", position)
+//        bundle.putString("input_nazwa", nazwa)
+//        bundle.putString("input_dzien", dzien)
+//        bundle.putString("input_godzina", godzina)
+//
+//        val fragment: Fragment = WybraneZajeciaFragment()
+//        fragment.arguments = bundle
+
+//        val fragmentManager = requireActivity().supportFragmentManager
+//        val fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.frameLayout, fragment)
+//        fragmentTransaction.addToBackStack(null)
+//        fragmentTransaction.commit()
+//        requireActivity().title = "Zajecia:"
+
+//    }
 }
