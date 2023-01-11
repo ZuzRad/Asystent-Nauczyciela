@@ -8,10 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.asystent.data.AppDatabase
-import com.example.asystent.data.uczen.Uczen
 import com.example.asystent.databinding.FragmentStronaGlownaBinding
-import com.example.asystent.fragments.uczen.UczniowieFragment
-import com.example.asystent.fragments.zajecia.ZajeciaFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 

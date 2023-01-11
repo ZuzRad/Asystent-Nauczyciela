@@ -4,16 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.asystent.R
 import com.example.asystent.data.AppDatabase
-import com.example.asystent.data.uczen.Uczen
-import com.example.asystent.data.zajecia.Zajecia
+import com.example.asystent.model.Zajecia
 import com.example.asystent.databinding.FragmentDodajZajeciaBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -84,7 +79,7 @@ class DodajZajeciaFragment:Fragment() {
                 dane = Zajecia(nazwa.text.toString(), dzien, godzina)
                 appDatabase.zajeciaDao().insert(dane)
             }
-
+            Toast.makeText(context, "Dodano zajęcia", Toast.LENGTH_SHORT).show()
             nazwa.setText("")
 //            val fragment: Fragment = ZajeciaFragment()
 //            val fragmentManager = requireActivity().supportFragmentManager
