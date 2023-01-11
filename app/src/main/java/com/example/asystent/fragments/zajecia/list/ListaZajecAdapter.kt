@@ -3,12 +3,18 @@ package com.example.asystent.fragments.zajecia.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.ListFragment
 import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.FragmentActivity
 import com.example.asystent.R
+import com.example.asystent.fragments.zajecia.DodajZajeciaFragment
+import com.example.asystent.fragments.zajecia.select.WybraneZajeciaFragment
 import com.example.asystent.model.Zajecia
 import kotlinx.android.synthetic.main.zajecia_row.view.*
 
-class ListaZajecAdapter: RecyclerView.Adapter<ListaZajecAdapter.MyViewHolder>() {
+class ListaZajecAdapter(): RecyclerView.Adapter<ListaZajecAdapter.MyViewHolder>() {
 
     private var listaZajec = emptyList<Zajecia>()
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -26,7 +32,21 @@ class ListaZajecAdapter: RecyclerView.Adapter<ListaZajecAdapter.MyViewHolder>() 
         holder.itemView.dzien.text = currentItem.dzien
         holder.itemView.godzina.text = currentItem.godzina
 
+        holder.itemView.setOnClickListener(object:View.OnClickListener{
+            override fun onClick(v: View?) {
+                val activity = v!!.context as AppCompatActivity
+                val fragment = WybraneZajeciaFragment()
+                activity.supportFragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).addToBackStack(null).commit()
+            }
+
+        })
+
+//        holder.itemView.zajecia_layout.setOnClickListener{
+//            onItemClicked(listaZajec[position])
+//        }
+
     }
+
 
     override fun getItemCount(): Int {
         return listaZajec.size
