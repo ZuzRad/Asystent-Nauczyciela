@@ -1,4 +1,4 @@
-package com.example.asystent.fragments.zajecia.list.selected
+package com.example.asystent.repository.selected
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -89,6 +89,7 @@ class WybraneZajeciaFragment:Fragment() {
         zajecia_text.setText(inputNazwa+"  "+inputDzien+"  "+inputGodzina)
 
 
+        val cos = getParentFragmentManager().findFragmentById(R.id.wybrane_zajecia)
         //recycleview
         val adapter3 = UczniowieZajeciaAdapter()
         val recyclerView = view.findViewById<RecyclerView>(R.id.uczniowie2_list)
@@ -98,12 +99,32 @@ class WybraneZajeciaFragment:Fragment() {
 
         //ViewModel
         uczenZajeciaViewmodel = ViewModelProvider(this).get(UczenZajeciaViewModel::class.java)
-        uczenZajeciaViewmodel.wyswietl_wszystko.observe(viewLifecycleOwner, Observer { uczenZajecia ->
+        appDatabase.uczenZajeciaDao().wyswietlUczniowZajecia(inputId).observe(viewLifecycleOwner, Observer { uczenZajecia ->
             adapter3.setData(uczenZajecia)
         })
 
+
+        //do wyswietlenia w nowym recycleview wszytskich uczniów
+//        //recycleview
+//        val adapter4 = ListaUczniowAdapter()
+//        val recyclerView2 = view.findViewById<RecyclerView>(R.id.uczniowie3_list)
+//        recyclerView2.adapter = adapter4
+//        recyclerView2.layoutManager = LinearLayoutManager(requireContext())
+//
+//
+//        //ViewModel
+//        uczenViewmodel = ViewModelProvider(this).get(UczenViewModel::class.java)
+//        uczenViewmodel.wyswietl_wszystko.observe(viewLifecycleOwner, Observer { uczen ->
+//            adapter4.setData(uczen)
+//        })
+
     }
 
+    fun getZajeciaId():Int?{
+        var inputId: Int? = null
+        inputId = arguments?.getInt("input_id")
+        return inputId
+    }
 
     fun dataToString(list: List<Uczen>): MutableList<Any> {
         var actual = ""

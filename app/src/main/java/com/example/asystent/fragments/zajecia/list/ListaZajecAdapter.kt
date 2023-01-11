@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystent.R
-import com.example.asystent.fragments.zajecia.list.selected.WybraneZajeciaFragment
+import com.example.asystent.repository.selected.WybraneZajeciaFragment
 import com.example.asystent.model.Zajecia
 import kotlinx.android.synthetic.main.zajecia_row.view.*
 

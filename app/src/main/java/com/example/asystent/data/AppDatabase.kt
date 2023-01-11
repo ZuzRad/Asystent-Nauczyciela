@@ -8,7 +8,7 @@ import com.example.asystent.model.Uczen
 import com.example.asystent.model.UczenZajecia
 import com.example.asystent.model.Zajecia
 
-@Database(entities = [Uczen::class, Zajecia::class, UczenZajecia::class], version = 7, exportSchema = false)
+@Database(entities = [Uczen::class, Zajecia::class, UczenZajecia::class], version = 8, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun uczenZajeciaDao(): UczenZajeciaDao

@@ -7,7 +7,7 @@ import com.example.asystent.model.UczenZajecia
 import com.example.asystent.model.Zajecia
 
 class ZajeciUczenRepository(private val uczenZajeciaDao: UczenZajeciaDao) {
-    val wyswietlUczenZajecia: LiveData<List<UczenZajecia>> = uczenZajeciaDao.wyswietlUczniowZajecia()
+   // val wyswietlUczenZajecia: LiveData<List<UczenZajecia>> = uczenZajeciaDao.wyswietlUczniowZajecia()
 
     suspend fun dodajUczenZajecia(uczenZajecia: UczenZajecia){
         uczenZajeciaDao.dodajUczniaZajecia(uczenZajecia)

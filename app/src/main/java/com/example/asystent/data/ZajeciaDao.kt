@@ -12,6 +12,9 @@ interface ZajeciaDao {
     @Query("SELECT * FROM zajecia_table ORDER BY id ASC")
     fun wyswietlZajecia(): LiveData<List<Zajecia>>
 
+    @Query("SELECT * FROM zajecia_table ORDER BY id ASC")
+    fun wyswietlZajecia2(): List<Zajecia>
+
     @Query("SELECT nazwa FROM zajecia_table")
     fun wyswietlNazwe(): String
 
