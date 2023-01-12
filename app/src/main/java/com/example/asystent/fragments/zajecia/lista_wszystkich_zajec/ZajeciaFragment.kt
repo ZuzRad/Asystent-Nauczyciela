@@ -1,4 +1,4 @@
-package com.example.asystent.fragments.zajecia.list
+package com.example.asystent.fragments.zajecia.lista_wszystkich_zajec
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,6 @@ import com.example.asystent.R
 import com.example.asystent.data.AppDatabase
 import com.example.asystent.viewModel.ZajeciaViewModel
 import com.example.asystent.databinding.FragmentZajeciaBinding
-import com.example.asystent.fragments.zajecia.DodajZajeciaFragment
 
 class ZajeciaFragment:Fragment() {
     private lateinit var appDatabase: AppDatabase

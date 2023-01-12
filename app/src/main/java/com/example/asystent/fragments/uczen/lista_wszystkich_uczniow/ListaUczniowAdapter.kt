@@ -1,4 +1,4 @@
-package com.example.asystent.fragments.uczen.list
+package com.example.asystent.fragments.uczen.lista_wszystkich_uczniow
 
 import android.view.LayoutInflater
 import android.view.View

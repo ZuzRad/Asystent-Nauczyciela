@@ -1,4 +1,4 @@
-package com.example.asystent.fragments.zajecia
+package com.example.asystent.fragments.zajecia.lista_wszystkich_zajec
 
 import android.os.Bundle
 import android.view.LayoutInflater

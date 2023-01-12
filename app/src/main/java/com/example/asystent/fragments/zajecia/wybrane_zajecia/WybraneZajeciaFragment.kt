@@ -1,7 +1,6 @@
-package com.example.asystent.repository.selected
+package com.example.asystent.fragments.zajecia.wybrane_zajecia
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,10 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.asystent.R
 import com.example.asystent.data.AppDatabase
 import com.example.asystent.databinding.FragmentWybraneZajeciaBinding
-import com.example.asystent.fragments.uczen.list.ListaUczniowAdapter
 import com.example.asystent.model.Uczen
 import com.example.asystent.model.UczenZajecia
-import com.example.asystent.model.Zajecia
 import com.example.asystent.viewModel.UczenZajeciaViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

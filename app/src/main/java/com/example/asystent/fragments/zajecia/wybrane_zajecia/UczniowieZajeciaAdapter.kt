@@ -1,17 +1,13 @@
-package com.example.asystent.repository.selected
+package com.example.asystent.fragments.zajecia.wybrane_zajecia
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystent.R
-import androidx.fragment.app.Fragment
 import com.example.asystent.data.AppDatabase
-import com.example.asystent.fragments.uczen.list.ListaUczniowAdapter
 import com.example.asystent.model.Uczen
 import com.example.asystent.model.UczenZajecia
-import com.example.asystent.model.Zajecia
 import kotlinx.android.synthetic.main.uczen_row.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,6 +39,7 @@ class UczniowieZajeciaAdapter(): RecyclerView.Adapter<UczniowieZajeciaAdapter.My
                 }
             }
         }
+        //TO DO: klikając ten item wyślij id_zajec i id_ucznia do ocenyfragment
     }
 
     override fun getItemCount(): Int {

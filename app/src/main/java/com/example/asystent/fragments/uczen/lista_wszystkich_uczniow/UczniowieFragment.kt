@@ -1,4 +1,4 @@
-package com.example.asystent.fragments.uczen.list
+package com.example.asystent.fragments.uczen.lista_wszystkich_uczniow
 
 import android.os.Bundle
 import android.view.*
@@ -12,7 +12,6 @@ import com.example.asystent.R
 import com.example.asystent.data.AppDatabase
 import com.example.asystent.viewModel.UczenViewModel
 import com.example.asystent.databinding.FragmentUczniowieBinding
-import com.example.asystent.fragments.uczen.DodajUczniaFragment
 
 
 class UczniowieFragment:Fragment() {

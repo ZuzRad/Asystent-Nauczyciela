@@ -1,4 +1,4 @@
-package com.example.asystent.fragments.uczen
+package com.example.asystent.fragments.uczen.lista_wszystkich_uczniow
 
 import android.os.Bundle
 import android.text.InputType

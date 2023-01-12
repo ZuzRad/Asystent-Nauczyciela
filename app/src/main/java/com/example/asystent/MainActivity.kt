@@ -7,8 +7,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.asystent.fragments.uczen.list.UczniowieFragment
-import com.example.asystent.fragments.zajecia.list.ZajeciaFragment
+import com.example.asystent.fragments.uczen.lista_wszystkich_uczniow.UczniowieFragment
+import com.example.asystent.fragments.zajecia.lista_wszystkich_zajec.ZajeciaFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
