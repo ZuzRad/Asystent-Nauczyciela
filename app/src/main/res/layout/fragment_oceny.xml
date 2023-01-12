@@ -5,15 +5,30 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView_uczen"
+        android:id="@+id/textView_zajecia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Uczen"
+        android:text="Zajecia"
         android:textSize="20dp"
+        android:textStyle="bold"
+        android:background="@color/purple_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_uczen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Uczen"
+        android:background="@color/purple_200"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_zajecia" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_oceny"
@@ -33,5 +48,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lista_oceny" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

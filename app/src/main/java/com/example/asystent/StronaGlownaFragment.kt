@@ -35,6 +35,7 @@ class StronaGlownaFragment : Fragment() {
                 appDatabase.uczenDao().usunUczniow()
                 appDatabase.zajeciaDao().usunWszystkieZajecia()
                 appDatabase.uczenZajeciaDao().usunUczniowZajecia()
+                appDatabase.ocenyDao().usunOceny()
             }
             Toast.makeText(context, "Wyczyszczono dane", Toast.LENGTH_SHORT).show()
         }

@@ -12,8 +12,8 @@ interface OcenyDao {
     @Query("SELECT * FROM oceny_table ORDER BY id ASC")
     fun wyswietlOceny2(): List<Oceny>
 
-    @Query("SELECT * FROM oceny_table ORDER BY id ASC")
-    fun wyswietlOceny(): LiveData<List<Oceny>>
+    @Query("SELECT * FROM oceny_table WHERE id_ucznia_ocena LIKE :uczen AND id_zajec_ocena LIKE :zajecia ORDER BY id ASC")
+    fun wyswietlOceny(uczen: Int?,zajecia: Int?): LiveData<List<Oceny>>
 
 
     @Query("DELETE FROM oceny_table")

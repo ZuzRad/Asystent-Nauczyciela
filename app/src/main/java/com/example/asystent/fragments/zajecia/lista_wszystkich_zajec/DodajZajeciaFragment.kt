@@ -81,13 +81,7 @@ class DodajZajeciaFragment:Fragment() {
             }
             Toast.makeText(context, "Dodano zajęcia", Toast.LENGTH_SHORT).show()
             nazwa.setText("")
-//            val fragment: Fragment = ZajeciaFragment()
-//            val fragmentManager = requireActivity().supportFragmentManager
-//            val fragmentTransaction = fragmentManager.beginTransaction()
-//            fragmentTransaction.replace(R.id.frameLayout, fragment)
-//            fragmentTransaction.addToBackStack(null)
-//            fragmentTransaction.commit()
-//            requireActivity().title = "Zajęcia"
+
         }
     }
 }
