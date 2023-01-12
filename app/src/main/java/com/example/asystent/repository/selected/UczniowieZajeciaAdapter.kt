@@ -17,15 +17,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-//dodaje się do wszystkich zajęć - dodaj ifa że jeśli znajdzie w tabeli id ucznia i id zajec to wtedy dodaj do recyclerwiev
 class UczniowieZajeciaAdapter(): RecyclerView.Adapter<UczniowieZajeciaAdapter.MyViewHolder>() {
     private lateinit var appDatabase: AppDatabase
     private var listaUczniow = emptyList<UczenZajecia>()
-    //private lateinit var wybraneZajeciaFragment: WybraneZajeciaFragment
-//val fragment = getParentFragmentManager().findFragmentById(R.id.wybrane_zajecia)
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-    }
+    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         appDatabase = AppDatabase.getDatabase(parent.context) //???
@@ -37,21 +33,15 @@ class UczniowieZajeciaAdapter(): RecyclerView.Adapter<UczniowieZajeciaAdapter.My
         runBlocking(Dispatchers.IO) {
             launch {
                 var list: List<Uczen> = appDatabase.uczenDao().wyswietlUczniow2()
-                var listZajecia: List<Zajecia> = appDatabase.zajeciaDao().wyswietlZajecia2()
 
- //tutaj ^ && listZajecia[y].id == wybraneZajeciaFragment.getZajeciaId()
-//                            holder.itemView.imie.text = list[x].imie
-//                            holder.itemView.nazwisko.text = list[x].nazwisko
-//                            holder.itemView.nr.text = list[x].nr.toString()
-                    holder.itemView.imie.text = currentItem.id_ucznia.toString()
-                    holder.itemView.nazwisko.text = currentItem.id_zajec.toString()
-                    holder.itemView.nr.text = ""
-
-
-
+                for(x in list.indices){
+                    if(list[x].id == currentItem.id_ucznia){
+                        holder.itemView.imie.text = list[x].imie
+                        holder.itemView.nazwisko.text = list[x].nazwisko
+                        holder.itemView.nr.text = list[x].nr.toString()
+                    }
+                }
             }
-
-
         }
     }
 

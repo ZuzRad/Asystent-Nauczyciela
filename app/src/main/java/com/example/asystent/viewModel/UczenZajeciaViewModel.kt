@@ -13,13 +13,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class UczenZajeciaViewModel(application: Application) : AndroidViewModel(application) {
-   // val wyswietl_wszystko: LiveData<List<UczenZajecia>>
     private val repository: ZajeciUczenRepository
     init{
         val uczenZajeciaDao = AppDatabase.getDatabase(application).uczenZajeciaDao()
         repository = ZajeciUczenRepository(uczenZajeciaDao)
-        //wyswietl_wszystko = uczenZajeciaDao.wyswietlUczniowZajecia()
-
     }
 
 }

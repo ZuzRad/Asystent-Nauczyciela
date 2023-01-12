@@ -1,6 +1,7 @@
 package com.example.asystent.repository.selected
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,8 +55,6 @@ class WybraneZajeciaFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ListaUczniowAdapter()
-
         val spinner_uczen = view.findViewById<Spinner>(R.id.spinner_uczen)
         uczenViewmodel = ViewModelProvider(this).get(UczenViewModel::class.java)
         runBlocking(Dispatchers.IO) {
@@ -67,70 +66,50 @@ class WybraneZajeciaFragment:Fragment() {
                 spinner_uczen.adapter = adapter2
                 spinner_uczen.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                       // if(position>0){
+                        if(position>0){
                             runBlocking(Dispatchers.IO) {
-                                var dane = UczenZajecia(0,0)
-                                dane = UczenZajecia(list[position].id, inputId)
-                                appDatabase.uczenZajeciaDao().insert(dane)
-//                                newlist.removeAt(position)
+                                var listaZapisy: List<UczenZajecia> = appDatabase.uczenZajeciaDao().wyswietlUczniowZajecia2()
+                                var temp = 0
+                                for(x in listaZapisy){
+                                    if(list[position-1].id == x.id_ucznia &&  inputId == x.id_zajec) {
+                                        temp = 1
+                                    }
+                                }
+                                if(temp==0){
+                                    var dane = UczenZajecia(0,0)
+                                    dane = UczenZajecia(list[position-1].id, inputId)
+                                    appDatabase.uczenZajeciaDao().insert(dane)
+                                }
                             }
-                       // }
-
-
-
+                        }
                     }
                     override fun onNothingSelected(parent: AdapterView<*>?) {}
                 }
+            }
         }
-        }
-
 
         val zajecia_text =view.findViewById<TextView>(R.id.text_zajecia)
         zajecia_text.setText(inputNazwa+"  "+inputDzien+"  "+inputGodzina)
 
-
-        val cos = getParentFragmentManager().findFragmentById(R.id.wybrane_zajecia)
         //recycleview
         val adapter3 = UczniowieZajeciaAdapter()
         val recyclerView = view.findViewById<RecyclerView>(R.id.uczniowie2_list)
         recyclerView.adapter = adapter3
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-
         //ViewModel
         uczenZajeciaViewmodel = ViewModelProvider(this).get(UczenZajeciaViewModel::class.java)
         appDatabase.uczenZajeciaDao().wyswietlUczniowZajecia(inputId).observe(viewLifecycleOwner, Observer { uczenZajecia ->
             adapter3.setData(uczenZajecia)
         })
-
-
-        //do wyswietlenia w nowym recycleview wszytskich uczniów
-//        //recycleview
-//        val adapter4 = ListaUczniowAdapter()
-//        val recyclerView2 = view.findViewById<RecyclerView>(R.id.uczniowie3_list)
-//        recyclerView2.adapter = adapter4
-//        recyclerView2.layoutManager = LinearLayoutManager(requireContext())
-//
-//
-//        //ViewModel
-//        uczenViewmodel = ViewModelProvider(this).get(UczenViewModel::class.java)
-//        uczenViewmodel.wyswietl_wszystko.observe(viewLifecycleOwner, Observer { uczen ->
-//            adapter4.setData(uczen)
-//        })
-
     }
 
-    fun getZajeciaId():Int?{
-        var inputId: Int? = null
-        inputId = arguments?.getInt("input_id")
-        return inputId
-    }
 
     fun dataToString(list: List<Uczen>): MutableList<Any> {
-        var actual = ""
+        var actual = "Dodaj ucznia"
         var text: MutableList<Any> = mutableListOf()
-        //text.add(actual)
-        //actual=""
+        text.add(actual)
+        actual=""
         for(x in list.indices){
             for(y in 0 .. 3){
                 if(y==0){
@@ -145,7 +124,6 @@ class WybraneZajeciaFragment:Fragment() {
             }
             text.add(actual)
             actual = ""
-
         }
         return text
     }
