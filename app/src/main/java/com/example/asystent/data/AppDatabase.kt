@@ -9,7 +9,7 @@ import com.example.asystent.model.Uczen
 import com.example.asystent.model.UczenZajecia
 import com.example.asystent.model.Zajecia
 
-@Database(entities = [Uczen::class, Zajecia::class, UczenZajecia::class, Oceny::class], version = 14, exportSchema = false)
+@Database(entities = [Uczen::class, Zajecia::class, UczenZajecia::class, Oceny::class], version = 15, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun ocenyDao(): OcenyDao

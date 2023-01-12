@@ -23,7 +23,6 @@ class DodajZajeciaFragment:Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentDodajZajeciaBinding.inflate(inflater, container, false)
         appDatabase = AppDatabase.getDatabase(requireContext())
         return binding.root
@@ -72,10 +71,8 @@ class DodajZajeciaFragment:Fragment() {
         button_dodaj.setOnClickListener{
 
 
-
             runBlocking(Dispatchers.IO) {
                 var dane = Zajecia("","","")
-                //dane = Uczen(editText_imie.text.toString(), editText_nazwisko.text.toString(), editText_nr.text.toString())
                 dane = Zajecia(nazwa.text.toString(), dzien, godzina)
                 appDatabase.zajeciaDao().insert(dane)
             }

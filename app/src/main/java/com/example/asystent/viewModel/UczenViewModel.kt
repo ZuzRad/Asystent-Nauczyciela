@@ -19,22 +19,4 @@ class UczenViewModel(application: Application) : AndroidViewModel(application) {
         wyswietl_wszystko = repository.wyswiwtl_wszystko
 
     }
-
-    fun dodajUcznia(uczen: Uczen){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.dodajU(uczen)
-        }
-    }
-
-    fun usunUcznia(uczen: Uczen){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.usunUcznia(uczen)
-        }
-    }
-
-    fun usunUcznoiw(){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.usunUczniow()
-        }
-    }
 }

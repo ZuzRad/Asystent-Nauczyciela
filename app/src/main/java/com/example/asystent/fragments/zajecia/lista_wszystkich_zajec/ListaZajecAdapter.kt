@@ -9,21 +9,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystent.R
-import com.example.asystent.fragments.zajecia.wybrane_zajecia.WybraneZajeciaFragment
+import com.example.asystent.fragments.zajecia.wybrane_zajecia.UczniowieWybranychZajecFragment
 import com.example.asystent.model.Zajecia
 import kotlinx.android.synthetic.main.zajecia_row.view.*
 
 class ListaZajecAdapter(): RecyclerView.Adapter<ListaZajecAdapter.MyViewHolder>() {
 
     private var listaZajec = emptyList<Zajecia>()
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
-    }
+    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.zajecia_row, parent, false))
     }
-
 
     override fun onBindViewHolder(holder: MyViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val currentItem = listaZajec[position]
@@ -48,9 +45,8 @@ class ListaZajecAdapter(): RecyclerView.Adapter<ListaZajecAdapter.MyViewHolder>(
                     bundle.putString("input_godzina", send_godzina)
                 }
 
-                val fragment: Fragment = WybraneZajeciaFragment()
+                val fragment: Fragment = UczniowieWybranychZajecFragment()
                 fragment.arguments = bundle
-
 
                 val activity = v!!.context as AppCompatActivity
                 activity.supportFragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).addToBackStack(null).commit()
@@ -61,7 +57,6 @@ class ListaZajecAdapter(): RecyclerView.Adapter<ListaZajecAdapter.MyViewHolder>(
         })
 
     }
-
 
     override fun getItemCount(): Int {
         return listaZajec.size

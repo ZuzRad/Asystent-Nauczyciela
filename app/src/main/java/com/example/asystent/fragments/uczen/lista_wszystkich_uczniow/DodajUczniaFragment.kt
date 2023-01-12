@@ -21,7 +21,6 @@ class DodajUczniaFragment:Fragment() {
     private val binding get() = _binding!!
     private lateinit var appDatabase: AppDatabase
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         _binding = FragmentDodajUczniaBinding.inflate(inflater, container, false)
@@ -34,8 +33,6 @@ class DodajUczniaFragment:Fragment() {
         _binding = null
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,8 +42,6 @@ class DodajUczniaFragment:Fragment() {
         editText_nr.inputType = InputType.TYPE_CLASS_NUMBER
         val button_dodaj = view.findViewById<Button>(R.id.button_dodajUcznia2)
         button_dodaj.setOnClickListener{
-
-
 
             var dane = Uczen("","",0)
 

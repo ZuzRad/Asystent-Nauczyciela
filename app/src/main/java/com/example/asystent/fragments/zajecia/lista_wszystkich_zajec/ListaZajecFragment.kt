@@ -12,18 +12,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystent.R
 import com.example.asystent.data.AppDatabase
+import com.example.asystent.databinding.FragmentLisaZajecBinding
 import com.example.asystent.viewModel.ZajeciaViewModel
-import com.example.asystent.databinding.FragmentZajeciaBinding
 
-class ZajeciaFragment:Fragment() {
+
+class ListaZajecFragment:Fragment() {
     private lateinit var appDatabase: AppDatabase
-    private var _binding: FragmentZajeciaBinding? = null
+    private var _binding: FragmentLisaZajecBinding? = null
     private val binding get() = _binding!!
     private lateinit var zajeciaViewmodel: ZajeciaViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentZajeciaBinding.inflate(inflater, container, false)
+        _binding = FragmentLisaZajecBinding.inflate(inflater, container, false)
         appDatabase = AppDatabase.getDatabase(requireContext())
         return binding.root
     }
@@ -43,7 +43,6 @@ class ZajeciaFragment:Fragment() {
             adapter.setData(zajecia)
         })
 
-
         val button_dodaj = view.findViewById<Button>(R.id.button_dodajZajecia)
         button_dodaj.setOnClickListener{
             val fragment: Fragment = DodajZajeciaFragment()
@@ -55,22 +54,4 @@ class ZajeciaFragment:Fragment() {
             requireActivity().title = "Dodaj zajęcia"
         }
     }
-//    override fun passData(position: Int, nazwa: String, dzien: String, godzina: String) {
-//        val bundle = Bundle()
-//        bundle.putInt("input_id", position)
-//        bundle.putString("input_nazwa", nazwa)
-//        bundle.putString("input_dzien", dzien)
-//        bundle.putString("input_godzina", godzina)
-//
-//        val fragment: Fragment = WybraneZajeciaFragment()
-//        fragment.arguments = bundle
-
-//        val fragmentManager = requireActivity().supportFragmentManager
-//        val fragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.frameLayout, fragment)
-//        fragmentTransaction.addToBackStack(null)
-//        fragmentTransaction.commit()
-//        requireActivity().title = "Zajecia:"
-
-//    }
 }

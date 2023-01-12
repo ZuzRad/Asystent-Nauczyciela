@@ -17,24 +17,5 @@ class ZajeciaViewModel(application: Application):AndroidViewModel(application) {
         val zajeciaDao = AppDatabase.getDatabase(application).zajeciaDao()
         repository = ZajeciaRepository(zajeciaDao)
         wyswietl_wszystko = repository.wyswietlZajecia
-
-    }
-
-    fun dodajZajecia(zajecia: Zajecia){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.dodajZajecia(zajecia)
-        }
-    }
-
-    fun usunZajecia(zajecia: Zajecia){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.usunZajecia(zajecia)
-        }
-    }
-
-    fun usunWszystkieZajecia(){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.usunWszystkiezajecia()
-        }
     }
 }

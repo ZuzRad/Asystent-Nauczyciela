@@ -13,9 +13,7 @@ class ListaUczniowAdapter: RecyclerView.Adapter<ListaUczniowAdapter.MyViewHolder
 
 
     private var listaUczniow = emptyList<Uczen>()
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
-    }
+    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.uczen_row, parent, false))
@@ -23,11 +21,9 @@ class ListaUczniowAdapter: RecyclerView.Adapter<ListaUczniowAdapter.MyViewHolder
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = listaUczniow[position]
-//        holder.itemView.text_id.text = currentItem.id.toString()
         holder.itemView.imie.text = currentItem.imie
         holder.itemView.nazwisko.text = currentItem.nazwisko
         holder.itemView.nr.text = currentItem.nr.toString()
-
     }
 
     override fun getItemCount(): Int {

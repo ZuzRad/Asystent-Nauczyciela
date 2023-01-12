@@ -6,10 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystent.R
 import com.example.asystent.data.AppDatabase
-import com.example.asystent.fragments.zajecia.wybrane_zajecia.UczniowieZajeciaAdapter
 import com.example.asystent.model.Oceny
 import com.example.asystent.model.Uczen
-import com.example.asystent.model.UczenZajecia
 import com.example.asystent.model.Zajecia
 import kotlinx.android.synthetic.main.uczen_row.view.*
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 //analogiczny adapter jak uczniowiezajeciaadapter wyswietli ocene jesli zgadza sie z id ucznia i z id zajec
-class ListaOcenAdapter(): RecyclerView.Adapter<ListaOcenAdapter.MyViewHolder>() {
+class OcenyWybranegoUczniaAdapter(): RecyclerView.Adapter<OcenyWybranegoUczniaAdapter.MyViewHolder>() {
     private lateinit var appDatabase: AppDatabase
     private var listaOcen = emptyList<Oceny>()
 

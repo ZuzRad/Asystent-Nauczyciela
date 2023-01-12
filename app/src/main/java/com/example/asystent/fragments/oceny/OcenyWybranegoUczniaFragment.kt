@@ -6,34 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystent.R
 import com.example.asystent.data.AppDatabase
 import com.example.asystent.databinding.FragmentOcenyBinding
-import com.example.asystent.databinding.FragmentWybraneZajeciaBinding
-import com.example.asystent.fragments.zajecia.wybrane_zajecia.UczniowieZajeciaAdapter
-import com.example.asystent.fragments.zajecia.wybrane_zajecia.WybraneZajeciaFragment
 import com.example.asystent.model.Oceny
 import com.example.asystent.model.Uczen
-import com.example.asystent.model.UczenZajecia
 import com.example.asystent.model.Zajecia
-import com.example.asystent.viewModel.OcenyViewModel
-import com.example.asystent.viewModel.UczenViewModel
-import com.example.asystent.viewModel.UczenZajeciaViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 //fragment analogiczny do wybranezajeciafragment
 //bedzie przyjmowal id ucznia i id zajec aby w spinnerze dodac ocene do tabeli i w recyclerview wyswietli sie ocena ucznia z tego przedmiotu
-class OcenyFragment:Fragment() {
+class OcenyWybranegoUczniaFragment:Fragment() {
     private lateinit var appDatabase: AppDatabase
     private var _binding: FragmentOcenyBinding? = null
     private val binding get() = _binding!!
@@ -41,7 +32,6 @@ class OcenyFragment:Fragment() {
     var input_id_ucznia: Int? = null
     var input_id_zajec: Int? = null
     private val listaOcen = arrayOf("Dodaj Ocenę",1,2,3,4,5,6)
-    private lateinit var ocenyViewModel: OcenyViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -51,10 +41,8 @@ class OcenyFragment:Fragment() {
         input_id_ucznia = arguments?.getInt("input_id_ucznia")
         input_id_zajec = arguments?.getInt("input_id_zajec")
 
-
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -95,15 +83,13 @@ class OcenyFragment:Fragment() {
             }
         }
 
-
         //recycleview
-        val adapter2 = ListaOcenAdapter()
+        val adapter2 = OcenyWybranegoUczniaAdapter()
         val recyclerView = view.findViewById<RecyclerView>(R.id.lista_oceny)
         recyclerView.adapter = adapter2
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        //ViewModel
-        ocenyViewModel = ViewModelProvider(this).get(OcenyViewModel::class.java)
+
         appDatabase.ocenyDao().wyswietlOceny(input_id_ucznia, input_id_zajec).observe(viewLifecycleOwner, Observer { oceny ->
             adapter2.setData(oceny)
         })

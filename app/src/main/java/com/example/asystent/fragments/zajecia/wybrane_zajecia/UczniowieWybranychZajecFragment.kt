@@ -19,13 +19,12 @@ import com.example.asystent.data.AppDatabase
 import com.example.asystent.databinding.FragmentWybraneZajeciaBinding
 import com.example.asystent.model.Uczen
 import com.example.asystent.model.UczenZajecia
-import com.example.asystent.viewModel.UczenZajeciaViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-class WybraneZajeciaFragment:Fragment() {
+class UczniowieWybranychZajecFragment:Fragment() {
     private lateinit var appDatabase: AppDatabase
     private var _binding: FragmentWybraneZajeciaBinding? = null
     private val binding get() = _binding!!
@@ -34,7 +33,6 @@ class WybraneZajeciaFragment:Fragment() {
     var inputDzien: String = ""
     var inputGodzina: String = ""
     private lateinit var uczenViewmodel: UczenViewModel
-    private lateinit var uczenZajeciaViewmodel: UczenZajeciaViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -88,13 +86,11 @@ class WybraneZajeciaFragment:Fragment() {
         zajecia_text.setText(inputNazwa+"  "+inputDzien+"  "+inputGodzina)
 
         //recycleview
-        val adapter3 = UczniowieZajeciaAdapter()
+        val adapter3 = UczniowieWybranychZajecAdapter()
         val recyclerView = view.findViewById<RecyclerView>(R.id.uczniowie2_list)
         recyclerView.adapter = adapter3
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        //ViewModel
-        uczenZajeciaViewmodel = ViewModelProvider(this).get(UczenZajeciaViewModel::class.java)
         appDatabase.uczenZajeciaDao().wyswietlUczniowZajecia(inputId).observe(viewLifecycleOwner, Observer { uczenZajecia ->
             adapter3.setData(uczenZajecia)
         })

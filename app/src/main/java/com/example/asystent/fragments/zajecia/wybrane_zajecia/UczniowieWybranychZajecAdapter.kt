@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystent.R
 import com.example.asystent.data.AppDatabase
-import com.example.asystent.fragments.oceny.OcenyFragment
+import com.example.asystent.fragments.oceny.OcenyWybranegoUczniaFragment
 import com.example.asystent.model.Uczen
 import com.example.asystent.model.UczenZajecia
 import kotlinx.android.synthetic.main.uczen_row.view.*
@@ -18,7 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class UczniowieZajeciaAdapter(): RecyclerView.Adapter<UczniowieZajeciaAdapter.MyViewHolder>() {
+class UczniowieWybranychZajecAdapter(): RecyclerView.Adapter<UczniowieWybranychZajecAdapter.MyViewHolder>() {
     private lateinit var appDatabase: AppDatabase
     private var listaUczniow = emptyList<UczenZajecia>()
 
@@ -63,7 +63,7 @@ class UczniowieZajeciaAdapter(): RecyclerView.Adapter<UczniowieZajeciaAdapter.My
                     }
                 }
 
-                val fragment: Fragment = OcenyFragment()
+                val fragment: Fragment = OcenyWybranegoUczniaFragment()
                 fragment.arguments = bundle
 
                 val activity = v!!.context as AppCompatActivity

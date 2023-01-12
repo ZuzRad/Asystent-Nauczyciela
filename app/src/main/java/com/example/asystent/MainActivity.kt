@@ -7,8 +7,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.asystent.fragments.uczen.lista_wszystkich_uczniow.UczniowieFragment
-import com.example.asystent.fragments.zajecia.lista_wszystkich_zajec.ZajeciaFragment
+import com.example.asystent.fragments.StronaGlownaFragment
+import com.example.asystent.fragments.uczen.lista_wszystkich_uczniow.ListaUczniowiowFragment
+import com.example.asystent.fragments.zajecia.lista_wszystkich_zajec.ListaZajecFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -31,13 +32,12 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         replaceFragment(StronaGlownaFragment(), "Strona główna")
 
-
-
+        
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_glowna -> replaceFragment(StronaGlownaFragment(),it.title.toString())
-                R.id.nav_zajecia -> replaceFragment(ZajeciaFragment(),it.title.toString())
-                R.id.nav_uczniowie -> replaceFragment(UczniowieFragment(),it.title.toString())
+                R.id.nav_zajecia -> replaceFragment(ListaZajecFragment(),it.title.toString())
+                R.id.nav_uczniowie -> replaceFragment(ListaUczniowiowFragment(),it.title.toString())
             }
             true
         }
